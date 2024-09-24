@@ -204,7 +204,8 @@ class ToolExpert(BaseAgent[State]):
     
     def get_guided_json(self, state: State) -> Dict[str, Any]:
         pass
-
+ 
+    # Use Serper to search
     def use_tool(self, mode: str, tool_input: str, doc_type: str = None) -> Any:
         if mode == "serper":
             results = serper_search(tool_input, self.location)
@@ -402,10 +403,9 @@ if __name__ == "__main__":
         "server": "claude",
         "temperature": 0.5
     }
-
-    For OpenAI
+   
     agent_kwargs = {
-        "model": "gpt-4o",
+        "model": "gpt-4o-mini",
         "server": "openai",
         "temperature": 0.1
     }
@@ -473,7 +473,7 @@ if __name__ == "__main__":
             break
 
         # current_time = datetime.now()
-        recursion_limit = 40
+        recursion_limit = 15
         state["recursion_limit"] = recursion_limit
         state["user_input"] = query
         limit = {"recursion_limit": recursion_limit}
