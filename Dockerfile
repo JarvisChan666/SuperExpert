@@ -1,15 +1,8 @@
 # Dockerfile for Jar3d
 FROM python:3.11-slim
 
-RUN useradd -m -u 1000 user
-USER user
-ENV HOME=/home/user \
-    PATH=/home/user/.local/bin:$PATH
-WORKDIR $HOME/app
-COPY --chown=user . $HOME/app
-
 # Set working directory
-# WORKDIR /app
+WORKDIR /app
 
 # # Set environment variables
 # ENV HOME=/app \
@@ -24,6 +17,12 @@ RUN apt-get update && apt-get install -y \
     gnupg \
     && rm -rf /var/lib/apt/lists/*
 
+RUN useradd -m -u 1000 user
+USER user
+ENV HOME=/home/user \
+    PATH=/home/user/.local/bin:$PATH
+WORKDIR $HOME/app
+COPY --chown=user . $HOME/app
     # FOR HUGGINGFACE
 RUN chmod -R 777 /app
 #
@@ -41,7 +40,8 @@ COPY . .
 # Ensure the config file is copied to the correct location
 # COPY config/config.yaml /app/config/config.yaml
 # COPY config/config.yaml /config/config.yaml
-COPY agent_memory/jar3d_final_response_previous_run.txt /app/agent_memory/jar3d_final_response_previous_run.txt
+# COPY agent_memory/jar3d_final_response_previous_run.txt /app/agent_memory/jar3d_final_response_previous_run.txt
+COPY agent_memory/jar3d_final_response_previous_run.txt /home/user/app/agent_memory/jar3d_final_response_previous_run.txt
 
 
 # Expose the port Chainlit runs on
