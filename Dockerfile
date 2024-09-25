@@ -20,7 +20,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
     # FOR HUGGINGFACE
-RUN chmod -R 777 /app/.files
+RUN chmod -R 777 /app
 #
 # Install dependencies
 COPY requirements.txt .
