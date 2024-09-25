@@ -19,6 +19,7 @@ RUN apt-get update && apt-get install -y \
     gnupg \
     && rm -rf /var/lib/apt/lists/*
 
+# Change to user
 RUN useradd -m -u 1000 user
 USER user
 ENV HOME=/home/user \

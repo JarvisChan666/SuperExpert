@@ -1,6 +1,6 @@
 # Jar3d: Open-Source Research Agent
 
-Jar3d is an open-source research agent developed by [@Brainqub3](https://www.brainqub3.com/)
+Jar3d is an open-source research agent developed by [Jarvis](https://www.linkedin.com/in/jarvischen630)!
 
 ## How to Use
 
