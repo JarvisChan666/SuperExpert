@@ -1,3 +1,14 @@
+---
+title: SuperExpert
+emoji: 📉
+colorFrom: pink
+colorTo: yellow
+sdk: docker
+pinned: false
+app_port: 8000
+app_file: chat.py
+---
+
 # Super Expert
 
 A project for versatile AI agents that can run with proprietary models or completely open-source. The meta expert has two agents: a basic [Meta Agent](Docs/Meta-Prompting%20Overview.MD), and [Jar3d](Docs/Introduction%20to%20Jar3d.MD), a more sophisticated and versatile agent.
