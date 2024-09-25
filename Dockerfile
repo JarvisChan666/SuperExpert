@@ -8,6 +8,8 @@ WORKDIR /app
 # ENV HOME=/app \
 #     PATH=/app/.local/bin:$PATH
 
+USER root
+RUN chmod -R 777 /app
 # Install minimal required build tools and dependencies for Playwright
 RUN apt-get update && apt-get install -y \
     gcc \
@@ -24,7 +26,7 @@ ENV HOME=/home/user \
 WORKDIR $HOME/app
 COPY --chown=user . $HOME/app
     # FOR HUGGINGFACE
-RUN chmod -R 777 /app
+
 #
 # Install dependencies
 COPY requirements.txt .
