@@ -1,6 +1,9 @@
 # Dockerfile for Jar3d
 FROM python:3.11-slim
 
+RUN useradd -m -u 1000 user
+USER user
+
 # Set working directory
 WORKDIR /app
 
