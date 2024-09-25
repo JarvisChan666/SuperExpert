@@ -1,3 +1,5 @@
+# Hybird RAG, combining "similarity search" & "knowledge graph"
+
 import sys
 import os
 root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -224,6 +226,7 @@ def run_hybrid_graph_retrrieval(graph: Neo4jGraph = None, corpus: List[Document]
         print(colored("Running Hybrid Retrieval...", "yellow"))
         unstructured_data = index_and_rank(corpus, query)
 
+        # We only feed > 30 to jar3d, subset
         query = f"""
         MATCH p = (n)-[r]->(m)
         WHERE COUNT {{(n)--()}} > 30
@@ -241,6 +244,7 @@ def run_hybrid_graph_retrrieval(graph: Neo4jGraph = None, corpus: List[Document]
     return retrieved_context
 
 
+# The chunking process begins with the intelligent_chunking function, which takes a URL and a query as input parameters.
 @timeout(20)  # Change: Takes url and query as input
 def intelligent_chunking(url: str, query: str) -> List[Document]:
     try:
@@ -251,7 +255,9 @@ def intelligent_chunking(url: str, query: str) -> List[Document]:
             raise ValueError("LLM_SHERPA_SERVER environment variable is not set")
         
         corpus = []
-
+#The function utilizes LayoutPDFReader to read and extract text from the specified PDF document located at the given URL. 
+#This is done by calling the LLM Sherpa API, which handles the PDF reading and layout analysis.
+#
         try: 
             print(colored("Starting LLM Sherpa LayoutPDFReader...\n\n", "yellow"))
             reader = LayoutPDFReader(llmsherpa_api_url)
@@ -261,7 +267,7 @@ def intelligent_chunking(url: str, query: str) -> List[Document]:
             print(colored(f"Error in LLM Sherpa LayoutPDFReader: {str(e)}", "red"))
             traceback.print_exc()
             doc = None
-        
+# Once the document is retrieved, it is processed into smaller, manageable chunks. Each chunk represents a segment of the document that retains semantic meaning and context.
         if doc:
             for chunk in doc.chunks():
                 document = Document(
@@ -321,6 +327,8 @@ def create_graph_index(
 ) -> Neo4jGraph:
     
     if os.environ.get('LLM_SERVER') == "openai":
+        # require hundreds calls to api
+        # we create index for every small chunk
         llm = ChatOpenAI(temperature=0, model_name="gpt-4o-mini")
 
     else:
@@ -370,6 +378,7 @@ def create_graph_index(
 
 def run_rag(urls: List[str], allowed_nodes: list[str] = None, allowed_relationships: list[str] = None, query: List[str] = None, hybrid: bool = False) -> List[Dict[str, str]]:
     # Change: adapted to take query and url as input.
+    # Intellegent document chunking
     with concurrent.futures.ThreadPoolExecutor(max_workers=min(len(urls), 5)) as executor:  
             futures = [executor.submit(intelligent_chunking, url, query) for url, query in zip(urls, query)]
             chunks_list = [future.result() for future in concurrent.futures.as_completed(futures)]
@@ -382,6 +391,7 @@ def run_rag(urls: List[str], allowed_nodes: list[str] = None, allowed_relationsh
 
     print(colored(f"\n\n DEBUG HYBRID VALUE: {hybrid}\n\n", "yellow"))
     
+    # combined with graph
     if hybrid:
         print(colored(f"\n\n Creating Graph Index...\n\n", "green"))
         graph = Neo4jGraph()

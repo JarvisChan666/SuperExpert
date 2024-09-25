@@ -67,7 +67,7 @@ def deduplicate_results(results, rerank=True):
             unique_results.append(result)
     return unique_results
 
-
+# Similarity search
 def index_and_rank(corpus: List[Document], query: str, top_percent: float = 20, batch_size: int = 25) -> List[Dict[str, str]]:
     print(colored(f"\n\nStarting indexing and ranking with FastEmbeddings and FAISS for {len(corpus)} documents\n\n", "green"))
     CACHE_DIR = "/app/fastembed_cache"
@@ -78,12 +78,13 @@ def index_and_rank(corpus: List[Document], query: str, top_percent: float = 20, 
     try:
         # Initialize an empty FAISS index
         index = None
-        docstore = InMemoryDocstore({})
+        docstore = InMemoryDocstore({}) # store meta data
         index_to_docstore_id = {}
 
         # Process documents in batches
         for i in range(0, len(corpus), batch_size):
             batch = corpus[i:i+batch_size]
+            # abstract content and metadata
             texts = [doc.page_content for doc in batch]
             metadatas = [doc.metadata for doc in batch]
 
@@ -215,13 +216,18 @@ def index_and_rank(corpus: List[Document], query: str, top_percent: float = 20, 
 
     return final_results
 
+# TODO optimize the retrieval
 def run_hybrid_graph_retrieval(graph: Neo4jGraph = None, corpus: List[Document] = None, query: str = None, hybrid: bool = False):
     print(colored(f"\n\Initiating Retrieval...\n\n", "green"))
 
     if hybrid:
         print(colored("Running Hybrid Retrieval...", "yellow"))
-        unstructured_data = index_and_rank(corpus, query)
+        # Similarity search
+        unstructured_data = index_and_rank(corpus, query) # similarity ranking 
 
+        # Cypher query language
+        # eg: where there is a directed relationship from node n to node m through relationship r.
+        # This condition filters the results to include only those nodes n that have more than 30 connections (relationships) to other nodes. The {(n)--()} syntax counts all relationships connected to node n, ensuring that only well-connected nodes are considered.
         query = f"""
         MATCH p = (n)-[r]->(m)
         WHERE COUNT {{(n)--()}} > 30
@@ -229,6 +235,7 @@ def run_hybrid_graph_retrieval(graph: Neo4jGraph = None, corpus: List[Document] 
         LIMIT 85
         """
         response = graph.query(query)
+        # this context will then pass to LLM to generate response
         retrieved_context = f"Important Relationships:{response}\n\n Additional Context:{unstructured_data}"
 
     else:

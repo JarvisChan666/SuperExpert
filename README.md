@@ -1,46 +1,47 @@
-# Meta Expert
+# Super Expert
 
 A project for versatile AI agents that can run with proprietary models or completely open-source. The meta expert has two agents: a basic [Meta Agent](Docs/Meta-Prompting%20Overview.MD), and [Jar3d](Docs/Introduction%20to%20Jar3d.MD), a more sophisticated and versatile agent.
 
-Act as an opne source perplexity.
+Act as an open source perplexity.
 
 Thanks John Adeojo, who brings this wonderful project to open source community!
 
+## Tech Stack
+- LLM(openai, claude, llama)
+- Frontend(Chainlit - chain of thought reasoning)
+- Backend
+   - python
+   - docker  
+   - Hugging Face deploy
+
+## TODO
+[] Long-term memory.
+[] Full Ollama and vLLM integration.
+[] Integrations to RAG platforms for more intelligent document processing and faster RAG.
+
 ## PMF - What problem this project has solved?
 
-## Technical Detail
-What is the logics?
-
-LLM Application Workflow
+## Business Logics
+### LLM Application Workflow
 1. User Query: The user initiates the interaction by submitting a query or request for information.
 2. Agent Accesses the Internet: The agent retrieves relevant information from various online sources, such as web pages, articles, and databases.
-3. Document Chunking: The retrieved URLs are processed to break down the content into smaller, manageable documents or chunks. This step ensures that the information is more digestible and can be analyzed effectively.
+3. Document Chunking: The retrieved URLs are processed to break down the content into smaller, manageable documents or chunks. This step ensures that the information is more digestible and can be analyzed effectively.(tools\legacy\offline_graph_rag_tool copy.py run_rag)
 4. Vectorization: Each document chunk is then transformed into a multi-dimensional embedding using vectorization techniques. This process captures the semantic meaning of the text, allowing for nuanced comparisons between different pieces of information.
 5. Similarity Search: A similarity search is performed using cosine similarity (or another appropriate metric) to identify and rank the most relevant document chunks in relation to the original user query. This step helps in finding the closest matches based on the embeddings generated earlier.
 6. Response Generation: Finally, the most relevant chunks are selected, and the LLM synthesizes them into a coherent response that directly addresses the user's query.
 
 ## Bullet points
-- By implemented RAG, Chain-of-Reasoning, and Meta-Prompting to complete long-running research tasks.
-
-- Neo4j Knowledge Graphs
-   -Why use this?
-   naive RAG:
-   ![naive](image.png)
-   Complex:
-   ![why need graph](assets/image.png)
-
-
-- Docker for backend
-
-- NLM-Ingestor - llmsherpa API - Chunk data
-
-
 
 
 ## FAQ
-1. Is it necessary for a recursion more than 30 rounds? Is it spending money too much?
+1. How this system work?
+
+2. 
 
 
+
+2. How hybrid-retrieval work?
+In `offline_graph_rag` file, we combine similarity search with
 
 ## Table of Contents
 
@@ -115,6 +116,7 @@ This project leverages four core concepts:
    nano config/config.yaml
    ```
 
+If you want to use hyhbrid search, please open settings and choose "Graph and Dense".
 ### API Key Configuration
 
 Enter API Keys for your choice of LLM provider:
@@ -222,9 +224,3 @@ Refer to the project's GitHub issues for common problems and solutions.
 
 Once you're set up, Jar3d will proceed to introduce itself and ask some questions. The questions are designed to help you refine your requirements. When you feel you have provided all the relevant information to Jar3d, you can end the questioning part of the workflow by typing `/end`.
 
-## Roadmap for Jar3d
-
-- Feedback to Jar3d so that final responses can be iterated on and amended.
-- Long-term memory.
-- Full Ollama and vLLM integration.
-- Integrations to RAG platforms for more intelligent document processing and faster RAG.
