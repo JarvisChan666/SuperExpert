@@ -367,6 +367,7 @@ async def run_workflow(workflow, state):
     return final_answer
 
 
+# Everytime we sent message
 @cl.on_message
 async def main(message: cl.Message):
     state: State = cl.user_session.get("state")
@@ -376,8 +377,10 @@ async def main(message: cl.Message):
     loop = asyncio.get_running_loop()
     state, response = await loop.run_in_executor(None, agent.run_chainlit, state, message)
 
+    # Send back to ui user
     await cl.Message(content=response, author="Jar3d👩‍💻").send()
 
+    # When user want to end
     if message.content == "/end":
         await cl.Message(
             content="This will take some time, probably a good time for a coffee break ☕...",
