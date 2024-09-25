@@ -25,6 +25,9 @@ Thanks John Adeojo, who brings this wonderful project to open source community!
    - docker  
    - Hugging Face deploy
 
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+
+
 ## TODO
 [] fix local docker bugs,local test
 [] deploy to Huggingface
