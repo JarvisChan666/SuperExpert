@@ -18,6 +18,9 @@ RUN apt-get update && apt-get install -y \
     wget \
     gnupg \
     && rm -rf /var/lib/apt/lists/*
+
+    # FOR HUGGINGFACE
+RUN chmod -R 777 /app/.files
 #
 # Install dependencies
 COPY requirements.txt .
