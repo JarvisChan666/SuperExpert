@@ -19,10 +19,11 @@ from agents.jar3d_agent import (State,
 from agents.base_agent import BaseAgent
 from utils.read_markdown import read_markdown_file
 from config.load_configs import load_config
+from dotenv import load_dotenv
 
 
-config_path = os.path.join(os.path.dirname(__file__), '..', 'config', 'config.yaml')
-load_config(config_path)
+# config_path = os.path.join(os.path.dirname(__file__), '..', 'config', 'config.yaml')
+# load_config(config_path)
 
 # Load environment variables from .env file
 load_dotenv()

@@ -6,6 +6,7 @@ sys.path.insert(0, root_dir)
 import requests
 from typing import Dict, Any
 from config.load_configs import load_config
+from dotenv import load_dotenv
 
 def format_results(organic_results: str) -> str:
     result_strings = []
@@ -33,8 +34,9 @@ def format_shopping_results(shopping_results: list) -> str:
     return '\n'.join(result_strings)
 
 def serper_search(query: str, location: str) -> Dict[str, Any]:
-    config_path = os.path.join(os.path.dirname(__file__), '..', 'config', 'config.yaml')
-    load_config(config_path)
+    # config_path = os.path.join(os.path.dirname(__file__), '..', 'config', 'config.yaml')
+    # load_config(config_path)
+    load_dotenv()
     search_url = "https://google.serper.dev/search"
     headers = {
         'Content-Type': 'application/json',
@@ -63,8 +65,9 @@ def serper_search(query: str, location: str) -> Dict[str, Any]:
         return f"JSON decoding error occurred: {json_err}"
     
 def serper_shopping_search(query: str, location: str) -> Dict[str, Any]:
-    config_path = os.path.join(os.path.dirname(__file__), '..', 'config', 'config.yaml')
-    load_config(config_path)
+    # config_path = os.path.join(os.path.dirname(__file__), '..', 'config', 'config.yaml')
+    # load_config(config_path)
+    load_dotenv()
     search_url = "https://google.serper.dev/shopping"
     headers = {
         'Content-Type': 'application/json',
@@ -89,8 +92,9 @@ def serper_shopping_search(query: str, location: str) -> Dict[str, Any]:
         return f"JSON decoding error occurred: {json_err}"
 
 def serper_scholar_search(query: str, location: str) -> Dict[str, Any]:
-    config_path = os.path.join(os.path.dirname(__file__), '..', 'config', 'config.yaml')
-    load_config(config_path)
+    # config_path = os.path.join(os.path.dirname(__file__), '..', 'config', 'config.yaml')
+    # load_config(config_path)
+    load_dotenv()
     search_url = "https://google.serper.dev/scholar"
     headers = {
         'Content-Type': 'application/json',

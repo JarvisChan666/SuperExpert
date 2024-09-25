@@ -26,6 +26,10 @@ Thanks John Adeojo, who brings this wonderful project to open source community!
    - Hugging Face deploy
 
 ## TODO
+[] fix local docker bugs,local test
+[] deploy to Huggingface
+
+
 [] Long-term memory.
 [] Full Ollama and vLLM integration.
 [] Integrations to RAG platforms for more intelligent document processing and faster RAG.

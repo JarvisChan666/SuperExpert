@@ -473,7 +473,7 @@ if __name__ == "__main__":
             break
 
         # current_time = datetime.now()
-        recursion_limit = 15
+        recursion_limit = 30
         state["recursion_limit"] = recursion_limit
         state["user_input"] = query
         limit = {"recursion_limit": recursion_limit}

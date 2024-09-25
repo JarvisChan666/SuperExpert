@@ -26,12 +26,14 @@ from config.load_configs import load_config
 from langchain_community.docstore.in_memory import InMemoryDocstore
 from fake_useragent import UserAgent
 import asyncio
+from dotenv import load_dotenv
 
 root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, root_dir)
 
-config_path = os.path.join(os.path.dirname(__file__), '..', 'config', 'config.yaml')
-load_config(config_path)
+# config_path = os.path.join(os.path.dirname(__file__), '..', 'config', 'config.yaml')
+# load_config(config_path)
+load_dotenv()
 
 ua = UserAgent()
 os.environ["USER_AGENT"] = ua.random
