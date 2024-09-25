@@ -24,6 +24,9 @@ from config.load_configs import load_config
 config_path = os.path.join(os.path.dirname(__file__), '..', 'config', 'config.yaml')
 load_config(config_path)
 
+# Load environment variables from .env file
+load_dotenv()
+
 server = os.environ.get("LLM_SERVER")
 recursion_limit = int(os.environ.get("RECURSION_LIMIT"))
 

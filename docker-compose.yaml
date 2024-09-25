@@ -1,5 +1,5 @@
 # docker-compose.yml
-version: '2.4'  # Use version 2.x for this syntax
+#version: '2.4'  # Use version 2.x for this syntax
 
 services:
   jar3d:

@@ -4,6 +4,10 @@ FROM python:3.11-slim
 # Set working directory
 WORKDIR /app
 
+# Set environment variables
+ENV HOME=/app \
+    PATH=/app/.local/bin:$PATH
+
 # Install minimal required build tools and dependencies for Playwright
 RUN apt-get update && apt-get install -y \
     gcc \
@@ -26,7 +30,7 @@ COPY . .
 
 # Ensure the config file is copied to the correct location
 # COPY config/config.yaml /app/config/config.yaml
-COPY config/config.yaml /config/config.yaml
+# COPY config/config.yaml /config/config.yaml
 COPY agent_memory/jar3d_final_response_previous_run.txt /app/agent_memory/jar3d_final_response_previous_run.txt
 
 
