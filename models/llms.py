@@ -8,7 +8,7 @@ from utils.logging import log_function, setup_logging
 from tenacity import retry, stop_after_attempt, wait_fixed, retry_if_exception_type
 from config.load_configs import load_config
 from dotenv import load_dotenv
-
+load_dotenv()
 
 setup_logging(level=logging.DEBUG)
 logger = logging.getLogger(__name__)

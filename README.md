@@ -29,7 +29,7 @@ Thanks John Adeojo, who brings this wonderful project to open source community!
 
 
 ## TODO
-[] fix local docker bugs,local test
+[] fix "/end" meta expert 503 error
 [] deploy to Huggingface
 
 
