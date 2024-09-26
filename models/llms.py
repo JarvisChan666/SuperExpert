@@ -397,7 +397,7 @@ class OpenAIModel(BaseModel):
         load_dotenv()
         self.model_endpoint = 'https://api.302.ai/v1/chat/completions'
         
-        self.api_key = os.environ('OPENAI_API_KEY')
+        self.api_key = os.environ['OPENAI_API_KEY']
         self.headers = {
             'Content-Type': 'application/json',
             'Authorization': f'Bearer {self.api_key}'
