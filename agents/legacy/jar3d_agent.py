@@ -100,7 +100,7 @@ def set_chat_finished(state: State) -> bool:
         final_response_formatted = final_response_formatted.rstrip()
         
         # print(colored(f"\n\n DEBUG: {final_response_formatted}\n\n", 'green'))
-        print(colored(f"\n\n Jar3d👩‍💻: {final_response_formatted}", 'cyan'))
+        print(colored(f"\n\n Jarvis👩‍💻: {final_response_formatted}", 'cyan'))
         state["final_answer"] = f'''{final_response_formatted}'''
     else:
         print(colored("Error: Could not find '>> FINAL ANSWER:' in the response", 'red'))
