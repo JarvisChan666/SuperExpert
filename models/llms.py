@@ -32,8 +32,8 @@ class BaseModel:
 class MistralModel(BaseModel):
     def __init__(self, temperature: float, model: str, json_response: bool, max_retries: int = 3, retry_delay: int = 1):
         super().__init__(temperature, model, json_response, max_retries, retry_delay)
-        config_path = os.path.join(os.path.dirname(__file__), '..', 'config', 'config.yaml')
-        load_config(config_path)
+        # config_path = os.path.join(os.path.dirname(__file__), '..', 'config', 'config.yaml')
+        # load_config(config_path)
         # load_config()
         self.api_key = os.environ.get("MISTRAL_API_KEY")
         self.headers = {
@@ -94,8 +94,8 @@ class MistralModel(BaseModel):
 class ClaudeModel(BaseModel):
     def __init__(self, temperature: float, model: str, json_response: bool, max_retries: int = 3, retry_delay: int = 1):
         super().__init__(temperature, model, json_response, max_retries, retry_delay)
-        config_path = os.path.join(os.path.dirname(__file__), '..', 'config', 'config.yaml')
-        load_config(config_path)
+        # config_path = os.path.join(os.path.dirname(__file__), '..', 'config', 'config.yaml')
+        # load_config(config_path)
         self.api_key = os.environ.get("ANTHROPIC_API_KEY")
         self.headers = {
             'Content-Type': 'application/json', 
@@ -147,8 +147,8 @@ class ClaudeModel(BaseModel):
 class GeminiModel(BaseModel):
     def __init__(self, temperature: float, model: str, json_response: bool, max_retries: int = 3, retry_delay: int = 1):
         super().__init__(temperature, model, json_response, max_retries, retry_delay)
-        config_path = os.path.join(os.path.dirname(__file__), '..', 'config', 'config.yaml')
-        load_config(config_path)
+        # config_path = os.path.join(os.path.dirname(__file__), '..', 'config', 'config.yaml')
+        # load_config(config_path)
         self.api_key = os.environ.get("GEMINI_API_KEY")
         self.headers = {
             'Content-Type': 'application/json'
@@ -218,8 +218,8 @@ class GeminiModel(BaseModel):
 class GroqModel(BaseModel):
     def __init__(self, temperature: float, model: str, json_response: bool, max_retries: int = 3, retry_delay: int = 1):
         super().__init__(temperature, model, json_response, max_retries, retry_delay)
-        config_path = os.path.join(os.path.dirname(__file__), '..', 'config', 'config.yaml')
-        load_config(config_path)
+        # config_path = os.path.join(os.path.dirname(__file__), '..', 'config', 'config.yaml')
+        # load_config(config_path)
         self.api_key = os.environ.get("GROQ_API_KEY")
         self.headers = {
             'Content-Type': 'application/json', 

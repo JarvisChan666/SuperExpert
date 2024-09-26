@@ -279,6 +279,7 @@ class NoToolExpert(BaseAgent[State]):
 
     def get_prompt(self, state) -> str:
         # print(f"\nn{state}\n")
+        # The prompt not from the markdown, but form the meta-expert generated
         system_prompt = state["meta_prompt"][-1].content
         return system_prompt
         
