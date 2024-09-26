@@ -23,9 +23,28 @@ class BaseModel:
 
     @retry(stop=stop_after_attempt(3), wait=wait_fixed(1), retry=retry_if_exception_type(requests.RequestException))
     def _make_request(self, url, headers, payload):
-        response = requests.post(url, headers=headers, data=json.dumps(payload))
-        response.raise_for_status()
-        return response.json()
+        retry_strategy = Retry(
+            total=5,  # total attempts
+            backoff_factor=0.5,  # backoff factor to apply
+            status_forcelist=[429, 500, 502, 503, 504],  # statuses to retry
+            method_whitelist=["HEAD", "GET", "OPTIONS", "POST"]
+        )
+        adapter = HTTPAdapter(max_retries=retry_strategy)
+        http = requests.Session()
+        http.mount("https://", adapter)
+        http.mount("http://", adapter)
+
+        try:
+            response = http.post(url, headers=headers, json=payload, timeout=10)
+            response.raise_for_status()
+            return response.json()
+        except requests.exceptions.RequestException as e:
+            print(f"Request failed: {e}")
+            raise
+
+        # response = requests.post(url, headers=headers, data=json.dumps(payload))
+        # response.raise_for_status()
+        # return response.json()
     
 class MistralModel(BaseModel):
     def __init__(self, temperature: float, model: str, json_response: bool, max_retries: int = 3, retry_delay: int = 1):

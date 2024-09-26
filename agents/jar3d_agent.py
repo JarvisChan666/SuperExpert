@@ -2,7 +2,7 @@ import json
 import os
 from multiprocessing import Pool, cpu_count
 # import requests
-# from tenacity import RetryError
+from tenacity import RetryError
 import concurrent.futures  # Add this import at the top of your file
 import re
 import logging
