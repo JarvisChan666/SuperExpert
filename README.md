@@ -29,7 +29,7 @@ Thanks John Adeojo, who brings this wonderful project to open source community!
 
 
 ## TODO
-[] fix "/end" meta expert 503 error
+[] fix "/end" meta expert 503 error,maybe we should "Retry".
 [] deploy to Huggingface
 
 
