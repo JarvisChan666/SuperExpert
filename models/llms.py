@@ -5,7 +5,7 @@ import os
 import logging
 from typing import List, Dict
 from utils.logging import log_function, setup_logging
-from tenacity import retry, stop_after_attempt, wait_fixed, retry_if_exception_type
+from tenacity import retry, stop_after_attempt, wait_fixed, retry_if_exception_type, wait_exponential
 from config.load_configs import load_config
 from dotenv import load_dotenv
 from requests.packages.urllib3.util.retry import Retry
