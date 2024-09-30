@@ -103,7 +103,7 @@ class ClaudeModel(BaseModel):
             'x-api-key': self.api_key,
             'anthropic-version': '2023-06-01'
         }
-        self.model_endpoint = "https://api.anthropic.com/v1/messages"
+        self.model_endpoint = "https://api.302.ai/v1/chat/completions"
 
     def invoke(self, messages: List[Dict[str, str]]) -> str:
         # time.sleep(5)

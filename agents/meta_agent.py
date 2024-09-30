@@ -399,7 +399,7 @@ if __name__ == "__main__":
 
     # For Claude
     agent_kwargs = {
-        "model": "claude-3-5-sonnet-20240620",
+        "model": "claude-3-haiku-20240307",
         "server": "claude",
         "temperature": 0.5
     }

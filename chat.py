@@ -58,7 +58,7 @@ def get_agent_kwargs(server: str = "claude", location: str = None, hybrid: bool 
     
     elif server == "claude":
         agent_kwargs = {
-            "model": "claude-3-5-sonnet-20240620",
+            "model": "claude-3-haiku-20240307",
             "server": "claude",
             "temperature": 0,
         }
