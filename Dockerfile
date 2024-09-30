@@ -47,8 +47,6 @@ COPY . .
 # COPY agent_memory/jar3d_final_response_previous_run.txt /app/agent_memory/jar3d_final_response_previous_run.txt
 
 
-ENTRYPOINT ["entrypoint.sh"]
-
 # Expose the port Chainlit runs on
 EXPOSE 8000
 
