@@ -10,6 +10,7 @@ WORKDIR /app
 
 USER root
 RUN chmod -R 777 /app
+
 # Install minimal required build tools and dependencies for Playwright
 RUN apt-get update && apt-get install -y \
     gcc \
@@ -44,8 +45,9 @@ COPY . .
 # COPY config/config.yaml /app/config/config.yaml
 # COPY config/config.yaml /config/config.yaml
 # COPY agent_memory/jar3d_final_response_previous_run.txt /app/agent_memory/jar3d_final_response_previous_run.txt
-COPY agent_memory/jar3d_final_response_previous_run.txt /home/user/app/agent_memory/jar3d_final_response_previous_run.txt
 
+
+ENTRYPOINT ["entrypoint.sh"]
 
 # Expose the port Chainlit runs on
 EXPOSE 8000

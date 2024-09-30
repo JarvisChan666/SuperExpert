@@ -23,7 +23,7 @@ class BaseModel:
         self.retry_delay = retry_delay
 
     # @retry(stop=stop_after_attempt(3), wait=wait_fixed(1), retry=retry_if_exception_type(requests.RequestException))
-    @retry(stop=stop_after_attempt(5), wait=wait_exponential(multiplier=1, min=2, max=10), reraise=True)
+    @retry(stop=stop_after_attempt(5), wait=wait_exponential(multiplier=1, min=10, max=15), reraise=True)
     def _make_request(self, url, headers, payload):
 
         response = requests.post(url, headers=headers, data=json.dumps(payload))

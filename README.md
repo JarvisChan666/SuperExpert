@@ -30,7 +30,7 @@ Thanks John Adeojo, who brings this wonderful project to open source community!
 
 ## TODO
 [] fix "/end" meta expert 503 error,maybe we should "Retry".
-[] deploy to Huggingface
+[x] deploy to Huggingface
 
 
 [] Long-term memory.
@@ -63,16 +63,30 @@ In `offline_graph_rag` file, we combine similarity search with
 
 ## Table of Contents
 
-1. [Core Concepts](#core-concepts)
-2. [Prerequisites](#prerequisites)
-3. [Configuration](#configuration)
-   - [API Key Configuration](#api-key-configuration)
-   - [Endpoints Configuration](#endpoints-configuration)
-4. [Setup for Basic Meta Agent](#setup-for-basic-meta-agent)
-5. [Setup for Jar3d](#setup-for-jar3d)
-   - [Docker Setup for Jar3d](#docker-setup-for-jar3d)
-   - [Interacting with Jar3d](#interacting-with-jar3d)
-6. [Roadmap for Jar3d](#roadmap-for-jar3d)
+- [Super Expert](#super-expert)
+  - [Tech Stack](#tech-stack)
+  - [TODO](#todo)
+  - [PMF - What problem this project has solved?](#pmf---what-problem-this-project-has-solved)
+  - [Business Logics](#business-logics)
+    - [LLM Application Workflow](#llm-application-workflow)
+  - [Bullet points](#bullet-points)
+  - [FAQ](#faq)
+  - [Table of Contents](#table-of-contents)
+  - [Core Concepts](#core-concepts)
+  - [Prerequisites](#prerequisites)
+    - [Environment Setup](#environment-setup)
+  - [Repository Setup](#repository-setup)
+  - [Configuration](#configuration)
+    - [API Key Configuration](#api-key-configuration)
+    - [Endpoints Configuration](#endpoints-configuration)
+  - [Setup for Basic Meta Agent](#setup-for-basic-meta-agent)
+    - [Run Your Query in Shell](#run-your-query-in-shell)
+  - [Setup for Jar3d](#setup-for-jar3d)
+    - [Docker Setup for Jar3d](#docker-setup-for-jar3d)
+      - [Prerequisites](#prerequisites-1)
+      - [Quick Start](#quick-start)
+      - [Notes](#notes)
+    - [Interacting with Jar3d](#interacting-with-jar3d)
 
 ## Core Concepts
 
