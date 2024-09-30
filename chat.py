@@ -40,12 +40,12 @@ def get_agent_kwargs(server: str = "claude", location: str = None, hybrid: bool 
 
     if server == "openai":
         agent_kwargs = {
-        "model": "gpt-3.5-turbo-0125",
+        "model": "gpt-4o-mini",
         "server": "openai",
         "temperature": 0,
         }
         agent_kwargs_meta_expert = agent_kwargs.copy()
-        agent_kwargs_meta_expert["model"] = "git-4o-mini"
+        agent_kwargs_meta_expert["model"] = "gpt-4o-mini"
 
     # Mistral 
     elif server == "mistral":

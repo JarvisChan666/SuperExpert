@@ -36,7 +36,7 @@ def get_agent_kwargs(server: str = "claude", location: str = None, hybrid: bool 
 
     if server == "openai":
         agent_kwargs = {
-        "model": "gpt-3.5-turbo-0125",
+        "model": "gpt-4o-mini",
         "server": "openai",
         "temperature": 0,
         }
