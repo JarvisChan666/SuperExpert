@@ -324,7 +324,7 @@ def create_graph_index(
 ) -> Neo4jGraph:
     
     if os.environ.get('LLM_SERVER') == "openai":
-        llm = ChatOpenAI(temperature=0, model_name="gpt-4o-mini-2024-07-18")
+        llm = ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo-0125-2024-07-18")
     else:
         llm = ChatAnthropic(temperature=0, model_name="claude-3-haiku-20240307")
 

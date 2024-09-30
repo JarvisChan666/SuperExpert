@@ -405,7 +405,7 @@ if __name__ == "__main__":
     }
    
     agent_kwargs = {
-        "model": "gpt-4o-mini",
+        "model": "gpt-3.5-turbo-0125",
         "server": "openai",
         "temperature": 0.1
     }
